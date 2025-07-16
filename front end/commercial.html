@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RBR05EVB7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3RBR05EVB7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Real Estate | Zendo - Offices, Warehouses & Retail Spaces</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Find commercial real estate, offices for lease, warehouses for sale, and retail spaces across Australia. AI-powered search for commercial property matching your business needs.">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Zendo">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="commercial real estate, offices for lease, warehouses for sale, retail spaces, commercial property, business premises, industrial property, office space">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Commercial Real Estate | Zendo">
+    <meta property="og:description" content="Find commercial real estate, offices for lease, warehouses for sale, and retail spaces across Australia.">
+    <meta property="og:type" content="website">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iMjAiIGZpbGw9IiMwMDdiZmYiLz4KPHN2ZyB4PSI0NSIgeT0iNDUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyeiIvPgo8cGF0aCBkPSJNMTIgN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNS01LTIuMjQtNS01IDIuMjQtNSA1LTV6Ii8+CjxwYXRoIGQ9Ik0xMiAxNGMtMS42NiAwLTMtMS4zNC0zLTMgMC0xLjY2IDEuMzQtMyAzLTMgMyAxLjM0IDMgMy0zIDN6Ii8+Cjwvc3ZnPgo8L3N2Zz4K">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Commercial Page Specific Styles */
+        .back-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .back-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .back-link:hover {
+            color: #4f46e5;
+        }
+        
+        .back-arrow {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        
+        .commercial-hero {
+            background: linear-gradient(135deg, #007bff 0%, #818cf8 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .commercial-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .commercial-hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .commercial-hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .commercial-hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .commercial-search-section {
+            padding: 3rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            margin: -2rem 2rem 0;
+            position: relative;
+            z-index: 3;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .commercial-search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .commercial-search-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1e293b;
+        }
+        
+        .commercial-search-bar {
+            display: flex;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+        
+        .commercial-search-bar:focus-within {
+            border-color: #007bff;
+        }
+        
+        .commercial-search-input {
+            flex: 1;
+            border: none;
+            padding: 1.25rem 1.5rem;
+            font-size: 1.125rem;
+            outline: none;
+            background: transparent;
+        }
+        
+        .commercial-search-input::placeholder {
+            color: #94a3b8;
+        }
+        
+        .commercial-search-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 1.25rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .commercial-search-btn:hover {
+            background: #4f46e5;
+        }
+        
+        .commercial-section {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+        
+        .commercial-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .commercial-section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+        
+        .listings-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .listing-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .listing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .listing-image {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .listing-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .listing-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .listing-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+        
+        .listing-location {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .listing-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        
+        .listing-details {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .listing-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .listing-cta {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .listing-cta:hover {
+            background: #4f46e5;
+        }
+        
+        .ai-explanation-section {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .ai-explanation-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .ai-explanation-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+        
+        .ai-explanation-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+        
+        .ai-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .ai-feature {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 1rem;
+            border: 1px solid rgba(0, 123, 255, 0.1);
+        }
+        
+        .ai-feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #007bff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .ai-feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+        
+        .ai-feature-text {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .commercial-hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .commercial-hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .commercial-search-section {
+                margin: -1rem 1rem 0;
+                border-radius: 1rem;
+            }
+            
+            .commercial-section-title {
+                font-size: 2rem;
+            }
+            
+            .back-nav-container {
+                padding: 0 1rem;
+            }
+            
+            .commercial-container {
+                padding: 0 1rem;
+            }
+            
+            .listing-image {
+                height: 200px;
+            }
+            
+            .ai-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .listings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .listings-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Back Navigation -->
+    <nav class="back-nav">
+        <div class="back-nav-container">
+            <a href="index.html" class="back-link">
+                <svg class="back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="commercial-hero">
+        <div class="commercial-hero-container">
+            <h1 class="commercial-hero-title">Find commercial spaces that work for your business</h1>
+            <p class="commercial-hero-subtitle">AI-powered search for offices, warehouses, retail spaces, and industrial properties across Australia</p>
+        </div>
+    </section>
+
+    <!-- AI Search Section -->
+    <section class="commercial-search-section">
+        <div class="commercial-search-container">
+            <h2 class="commercial-search-title">What are you looking for?</h2>
+            <form class="commercial-search-bar" id="commercial-search-form">
+                <input type="text" class="commercial-search-input" id="commercial-search-input" placeholder="Search by suburb, lease type, or business need..." required>
+                <button type="submit" class="commercial-search-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/>
+                    </svg>
+                    Search
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Featured Listings Section -->
+    <section class="commercial-section">
+        <div class="commercial-container">
+            <h2 class="commercial-section-title">Featured Commercial Properties</h2>
+            
+            <div class="listings-grid">
+                <!-- Listing 1 -->
+                <article class="listing-card">
+                    <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80');">
+                        <div class="listing-badge">For Lease</div>
+                    </div>
+                    <div class="listing-content">
+                        <h3 class="listing-title">Modern Office Space - CBD</h3>
+                        <div class="listing-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Melbourne CBD, VIC
+                        </div>
+                        <div class="listing-price">$85/sq m/month</div>
+                        <div class="listing-details">
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                500 sq m
+                            </span>
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                Furnished
+                            </span>
+                        </div>
+                        <a href="#" class="listing-cta">View Details</a>
+                    </div>
+                </article>
+
+                <!-- Listing 2 -->
+                <article class="listing-card">
+                    <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80');">
+                        <div class="listing-badge">For Sale</div>
+                    </div>
+                    <div class="listing-content">
+                        <h3 class="listing-title">Industrial Warehouse</h3>
+                        <div class="listing-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Western Sydney, NSW
+                        </div>
+                        <div class="listing-price">$2,850,000</div>
+                        <div class="listing-details">
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                2,500 sq m
+                            </span>
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                Loading Dock
+                            </span>
+                        </div>
+                        <a href="#" class="listing-cta">View Details</a>
+                    </div>
+                </article>
+
+                <!-- Listing 3 -->
+                <article class="listing-card">
+                    <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=600&q=80');">
+                        <div class="listing-badge">For Lease</div>
+                    </div>
+                    <div class="listing-content">
+                        <h3 class="listing-title">Retail Space - High Street</h3>
+                        <div class="listing-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Chapel Street, Melbourne
+                        </div>
+                        <div class="listing-price">$120/sq m/month</div>
+                        <div class="listing-details">
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                150 sq m
+                            </span>
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                High Foot Traffic
+                            </span>
+                        </div>
+                        <a href="#" class="listing-cta">View Details</a>
+                    </div>
+                </article>
+
+                <!-- Listing 4 -->
+                <article class="listing-card">
+                    <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=600&q=80');">
+                        <div class="listing-badge">For Sale</div>
+                    </div>
+                    <div class="listing-content">
+                        <h3 class="listing-title">Medical Office Complex</h3>
+                        <div class="listing-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            North Shore, Sydney
+                        </div>
+                        <div class="listing-price">$4,200,000</div>
+                        <div class="listing-details">
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                800 sq m
+                            </span>
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                Medical Grade
+                            </span>
+                        </div>
+                        <a href="#" class="listing-cta">View Details</a>
+                    </div>
+                </article>
+
+                <!-- Listing 5 -->
+                <article class="listing-card">
+                    <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80');">
+                        <div class="listing-badge">For Lease</div>
+                    </div>
+                    <div class="listing-content">
+                        <h3 class="listing-title">Co-working Space</h3>
+                        <div class="listing-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Brisbane CBD, QLD
+                        </div>
+                        <div class="listing-price">$350/desk/month</div>
+                        <div class="listing-details">
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                50 Desks
+                            </span>
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                All Inclusive
+                            </span>
+                        </div>
+                        <a href="#" class="listing-cta">View Details</a>
+                    </div>
+                </article>
+
+                <!-- Listing 6 -->
+                <article class="listing-card">
+                    <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80');">
+                        <div class="listing-badge">For Sale</div>
+                    </div>
+                    <div class="listing-content">
+                        <h3 class="listing-title">Mixed-Use Development Site</h3>
+                        <div class="listing-location">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            Gold Coast, QLD
+                        </div>
+                        <div class="listing-price">$8,500,000</div>
+                        <div class="listing-details">
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                2,000 sq m
+                            </span>
+                            <span class="listing-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                DA Approved
+                            </span>
+                        </div>
+                        <a href="#" class="listing-cta">View Details</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Explanation Section -->
+    <section class="ai-explanation-section">
+        <div class="ai-explanation-container">
+            <h2 class="ai-explanation-title">How Zendo's AI Transforms Commercial Property Search</h2>
+            <p class="ai-explanation-text">
+                Unlike residential property search, commercial real estate requires understanding complex business needs, zoning regulations, and market dynamics. Our AI analyzes your business requirements, growth plans, and budget constraints to match you with properties that truly fit your operational needs.
+            </p>
+            
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <div class="ai-feature-icon">🏢</div>
+                    <h3 class="ai-feature-title">Business-Focused Matching</h3>
+                    <p class="ai-feature-text">Our AI understands industry-specific requirements, from medical facilities needing specialized infrastructure to tech companies requiring high-speed connectivity.</p>
+                </div>
+                
+                <div class="ai-feature">
+                    <div class="ai-feature-icon">📊</div>
+                    <h3 class="ai-feature-title">Market Intelligence</h3>
+                    <p class="ai-feature-text">Get insights on rental yields, market trends, and growth projections specific to your industry and location preferences.</p>
+                </div>
+                
+                <div class="ai-feature">
+                    <div class="ai-feature-icon">⚡</div>
+                    <h3 class="ai-feature-title">Instant Analysis</h3>
+                    <p class="ai-feature-text">Compare multiple properties instantly with detailed analysis of costs, potential returns, and suitability for your business model.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2024 Zendo. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
