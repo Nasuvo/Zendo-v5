@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RBR05EVB7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3RBR05EVB7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recently Sold Properties | Zendo - Property Sales & Agent Listings</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="View recently sold properties in your area and list your property with Zendo. Get market insights and connect with top real estate agents.">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Zendo">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iMjAiIGZpbGw9IiM2MzY2ZjEiLz4KPHN2ZyB4PSI0NSIgeT0iNDUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyeiIvPgo8cGF0aCBkPSJNMTIgN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNS01LTIuMjQtNS01IDIuMjQtNSA1LTV6Ii8+CjxwYXRoIGQ9Ik0xMiAxNGMtMS42NiAwLTMtMS4zNC0zLTMgMC0xLjY2IDEuMzQtMyAzLTMgMyAxLjM0IDMgMy0zIDN6Ii8+Cjwvc3ZnPgo8L3N2Zz4K">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Sell Page Specific Styles */
+        .back-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .back-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .back-link:hover {
+            color: #007bff;
+        }
+        
+        .back-arrow {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        
+        .sell-hero {
+            background: linear-gradient(135deg, #007bff 0%, #339cff 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sell-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .sell-hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .sell-hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .sell-hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .sell-search-section {
+            padding: 3rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            margin: -2rem 2rem 0;
+            position: relative;
+            z-index: 3;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sell-search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .sell-search-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1e293b;
+        }
+        
+        .sell-search-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 1rem;
+            align-items: end;
+        }
+        
+        .search-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .search-field label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .search-input {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+            background: white;
+        }
+        
+        .search-input:focus {
+            border-color: #007bff;
+        }
+        
+        .search-select {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .search-select:focus {
+            border-color: #007bff;
+        }
+        
+        .search-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            height: fit-content;
+        }
+        
+        .search-btn:hover {
+            background: #007bff;
+        }
+        
+        .sold-listings-section {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+        
+        .sold-listings-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .sold-listings-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+        
+        .sold-listings-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .sold-property-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sold-property-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sold-property-image {
+            width: 100%;
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .sold-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #007bff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .sold-property-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sold-property-address {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+        
+        .sold-property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #007bff !important;
+            margin-bottom: 1rem;
+        }
+        
+        .sold-property-details {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+        
+        .sold-property-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .sold-date {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+        
+        .agent-section {
+            background: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .agent-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .agent-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+        
+        .agent-subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .start-listing-btn {
+            background: #007bff !important;
+            color: #fff !important;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: 1.125rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .start-listing-btn:hover {
+            background: #0056b3 !important;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sell-hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .sell-hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .sell-search-section {
+                margin: -1rem 1rem 0;
+                border-radius: 1rem;
+            }
+            
+            .sell-search-form {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .sold-listings-title {
+                font-size: 2rem;
+            }
+            
+            .agent-title {
+                font-size: 2rem;
+            }
+            
+            .back-nav-container {
+                padding: 0 1rem;
+            }
+            
+            .sold-listings-container {
+                padding: 0 1rem;
+            }
+            
+            .sold-property-image {
+                height: 200px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .sold-listings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .sold-listings-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Back Navigation -->
+    <nav class="back-nav">
+        <div class="back-nav-container">
+            <a href="index.html" class="back-link">
+                <svg class="back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="sell-hero">
+        <div class="sell-hero-container">
+            <h1 class="sell-hero-title">Recently Sold Properties</h1>
+            <p class="sell-hero-subtitle">See what homes are selling for in your area</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="sell-search-section">
+        <div class="sell-search-container">
+            <h2 class="sell-search-title">Search Sold Properties</h2>
+            <form class="sell-search-form" id="sold-search-form">
+                <div class="search-field">
+                    <label for="suburb-search">Suburb</label>
+                    <input type="text" id="suburb-search" class="search-input" placeholder="Enter suburb name">
+                </div>
+                <div class="search-field">
+                    <label for="property-type">Property Type</label>
+                    <select id="property-type" class="search-select">
+                        <option value="">All Types</option>
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="townhouse">Townhouse</option>
+                        <option value="unit">Unit</option>
+                        <option value="land">Land</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke-width="2"/>
+                    </svg>
+                    Search
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sold Listings Section -->
+    <section class="sold-listings-section">
+        <div class="sold-listings-container">
+            <h2 class="sold-listings-title">Recent Sales in Your Area</h2>
+            
+            <div class="sold-listings-grid">
+                <!-- Sold Property 1 -->
+                <article class="sold-property-card">
+                    <div class="sold-property-image" style="background-image: url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=600&q=80');">
+                        <div class="sold-badge">Sold</div>
+                    </div>
+                    <div class="sold-property-content">
+                        <h3 class="sold-property-address">12 Oakwood Ave, Rowville VIC</h3>
+                        <div class="sold-property-price">$1,150,000</div>
+                        <div class="sold-property-details">
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                4 beds
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                2 baths
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                2 cars
+                            </span>
+                        </div>
+                        <div class="sold-date">Sold on Dec 15, 2024</div>
+                    </div>
+                </article>
+
+                <!-- Sold Property 2 -->
+                <article class="sold-property-card">
+                    <div class="sold-property-image" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80');">
+                        <div class="sold-badge">Sold</div>
+                    </div>
+                    <div class="sold-property-content">
+                        <h3 class="sold-property-address">8 Beachside Dr, Brighton VIC</h3>
+                        <div class="sold-property-price">$2,350,000</div>
+                        <div class="sold-property-details">
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                5 beds
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                3 baths
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                3 cars
+                            </span>
+                        </div>
+                        <div class="sold-date">Sold on Dec 12, 2024</div>
+                    </div>
+                </article>
+
+                <!-- Sold Property 3 -->
+                <article class="sold-property-card">
+                    <div class="sold-property-image" style="background-image: url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80');">
+                        <div class="sold-badge">Sold</div>
+                    </div>
+                    <div class="sold-property-content">
+                        <h3 class="sold-property-address">22 Urban Lane, South Yarra VIC</h3>
+                        <div class="sold-property-price">$1,780,000</div>
+                        <div class="sold-property-details">
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                3 beds
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                2 baths
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                1 car
+                            </span>
+                        </div>
+                        <div class="sold-date">Sold on Dec 10, 2024</div>
+                    </div>
+                </article>
+
+                <!-- Sold Property 4 -->
+                <article class="sold-property-card">
+                    <div class="sold-property-image" style="background-image: url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80');">
+                        <div class="sold-badge">Sold</div>
+                    </div>
+                    <div class="sold-property-content">
+                        <h3 class="sold-property-address">5 Maple St, Glen Waverley VIC</h3>
+                        <div class="sold-property-price">$950,000</div>
+                        <div class="sold-property-details">
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                4 beds
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                2 baths
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                2 cars
+                            </span>
+                        </div>
+                        <div class="sold-date">Sold on Dec 8, 2024</div>
+                    </div>
+                </article>
+
+                <!-- Sold Property 5 -->
+                <article class="sold-property-card">
+                    <div class="sold-property-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80');">
+                        <div class="sold-badge">Sold</div>
+                    </div>
+                    <div class="sold-property-content">
+                        <h3 class="sold-property-address">45 Collins St, Melbourne VIC</h3>
+                        <div class="sold-property-price">$4,200,000</div>
+                        <div class="sold-property-details">
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                6 beds
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                4 baths
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                4 cars
+                            </span>
+                        </div>
+                        <div class="sold-date">Sold on Dec 5, 2024</div>
+                    </div>
+                </article>
+
+                <!-- Sold Property 6 -->
+                <article class="sold-property-card">
+                    <div class="sold-property-image" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80');">
+                        <div class="sold-badge">Sold</div>
+                    </div>
+                    <div class="sold-property-content">
+                        <h3 class="sold-property-address">12 Harbour View, Sydney NSW</h3>
+                        <div class="sold-property-price">$6,800,000</div>
+                        <div class="sold-property-details">
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                5 beds
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                3 baths
+                            </span>
+                            <span class="sold-property-detail">
+                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                3 cars
+                            </span>
+                        </div>
+                        <div class="sold-date">Sold on Dec 3, 2024</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Section -->
+    <section class="agent-section">
+        <div class="agent-container">
+            <h2 class="agent-title">List your property on Zendo</h2>
+            <p class="agent-subtitle">Join thousands of agents who trust Zendo to showcase their properties. Get more views, more inquiries, and more sales with our AI-powered platform.</p>
+            <a href="agent-dashboard.html" class="start-listing-btn">Start Listing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2024 Zendo. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

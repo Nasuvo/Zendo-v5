@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3RBR05EVB7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-3RBR05EVB7');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Loans | Zendo - Compare Top Rates in Australia</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Compare home loan rates from Australia's top lenders. Find the best mortgage deals with Zendo's comprehensive comparison tool.">
+    <meta name="theme-color" content="#007bff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Zendo">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iMjAiIGZpbGw9IiM2MzY2ZjEiLz4KPHN2ZyB4PSI0NSIgeT0iNDUiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyeiIvPgo8cGF0aCBkPSJNMTIgN2MtMi43NiAwLTUgMi4yNC01IDVzMi4yNCA1IDUgNS01LTIuMjQtNS01IDIuMjQtNSA1LTV6Ii8+CjxwYXRoIGQ9Ik0xMiAxNGMtMS42NiAwLTMtMS4zNC0zLTMgMC0xLjY2IDEuMzQtMyAzLTMgMyAxLjM0IDMgMy0zIDN6Ii8+Cjwvc3ZnPgo8L3N2Zz4K">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Home Loans Page Specific Styles */
+        .back-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .back-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .back-link:hover {
+            color: #007bff;
+        }
+        
+        .back-arrow {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        
+        .loans-hero {
+            background: linear-gradient(135deg, #007bff 0%, #339cff 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .loans-hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .loans-hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .loans-hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .loans-section {
+            padding: 4rem 0;
+            background: #f8fafc;
+        }
+        
+        .loans-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .loans-section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+        
+        .lenders-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .lender-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .lender-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lender-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .lender-logo {
+            width: 60px;
+            height: 60px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #007bff;
+        }
+        
+        .lender-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #1e293b;
+        }
+        
+        .lender-info p {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .rates-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .rate-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+        
+        .rate-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .rate-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        
+        .rate-value.highlight {
+            color: #059669;
+        }
+        
+        .lender-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: stretch;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+        
+        .apply-btn {
+            flex: 1;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .apply-btn:hover {
+            background: #007bff;
+        }
+        
+        .view-more-btn {
+            background: transparent;
+            color: #007bff;
+            border: 2px solid #007bff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .view-more-btn:hover {
+            background: #007bff;
+            color: white;
+        }
+        
+        .disclaimer {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .disclaimer h4 {
+            color: #92400e;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .disclaimer p {
+            color: #92400e;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .loans-hero-title {
+                font-size: 2rem;
+            }
+            
+            .loans-hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .loans-section-title {
+                font-size: 2rem;
+            }
+            
+            .rates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lender-actions {
+                flex-direction: column;
+            }
+            
+            .back-nav-container {
+                padding: 0 1rem;
+            }
+            
+            .loans-container {
+                padding: 0 1rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .lenders-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .lenders-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Back Navigation -->
+    <nav class="back-nav">
+        <div class="back-nav-container">
+            <a href="index.html" class="back-link">
+                <svg class="back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="loans-hero">
+        <div class="loans-hero-container">
+            <h1 class="loans-hero-title">Compare Top Home Loan Rates in Australia</h1>
+            <p class="loans-hero-subtitle">Find the best mortgage deals from Australia's leading lenders. Compare rates, fees, and features to make an informed decision.</p>
+        </div>
+    </section>
+
+    <!-- Lenders Comparison Section -->
+    <section class="loans-section">
+        <div class="loans-container">
+            <h2 class="loans-section-title">Current Home Loan Rates</h2>
+            
+            <div class="lenders-grid">
+                <!-- Commonwealth Bank -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">CBA</div>
+                        <div class="lender-info">
+                            <h3>Commonwealth Bank</h3>
+                            <p>Australia's largest bank</p>
+                        </div>
+                    </div>
+                    <div class="rates-grid">
+                        <div class="rate-item">
+                            <div class="rate-label">Variable Rate</div>
+                            <div class="rate-value">6.24%</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="rate-label">Fixed Rate (2yr)</div>
+                            <div class="rate-value">6.09%</div>
+                        </div>
+                    </div>
+                    <div class="lender-actions">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <a href="#" class="view-more-btn">View More</a>
+                    </div>
+                </div>
+
+                <!-- ANZ -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">ANZ</div>
+                        <div class="lender-info">
+                            <h3>ANZ Bank</h3>
+                            <p>Flexible home loan options</p>
+                        </div>
+                    </div>
+                    <div class="rates-grid">
+                        <div class="rate-item">
+                            <div class="rate-label">Variable Rate</div>
+                            <div class="rate-value highlight">6.19%</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="rate-label">Fixed Rate (2yr)</div>
+                            <div class="rate-value">6.04%</div>
+                        </div>
+                    </div>
+                    <div class="lender-actions">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <a href="#" class="view-more-btn">View More</a>
+                    </div>
+                </div>
+
+                <!-- NAB -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">NAB</div>
+                        <div class="lender-info">
+                            <h3>National Australia Bank</h3>
+                            <p>Competitive rates & features</p>
+                        </div>
+                    </div>
+                    <div class="rates-grid">
+                        <div class="rate-item">
+                            <div class="rate-label">Variable Rate</div>
+                            <div class="rate-value">6.29%</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="rate-label">Fixed Rate (2yr)</div>
+                            <div class="rate-value">6.14%</div>
+                        </div>
+                    </div>
+                    <div class="lender-actions">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <a href="#" class="view-more-btn">View More</a>
+                    </div>
+                </div>
+
+                <!-- Westpac -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">WBC</div>
+                        <div class="lender-info">
+                            <h3>Westpac</h3>
+                            <p>Innovative banking solutions</p>
+                        </div>
+                    </div>
+                    <div class="rates-grid">
+                        <div class="rate-item">
+                            <div class="rate-label">Variable Rate</div>
+                            <div class="rate-value">6.34%</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="rate-label">Fixed Rate (2yr)</div>
+                            <div class="rate-value">6.19%</div>
+                        </div>
+                    </div>
+                    <div class="lender-actions">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <a href="#" class="view-more-btn">View More</a>
+                    </div>
+                </div>
+
+                <!-- Macquarie -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">MQG</div>
+                        <div class="lender-info">
+                            <h3>Macquarie Bank</h3>
+                            <p>Premium banking services</p>
+                        </div>
+                    </div>
+                    <div class="rates-grid">
+                        <div class="rate-item">
+                            <div class="rate-label">Variable Rate</div>
+                            <div class="rate-value">6.14%</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="rate-label">Fixed Rate (2yr)</div>
+                            <div class="rate-value highlight">5.99%</div>
+                        </div>
+                    </div>
+                    <div class="lender-actions">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <a href="#" class="view-more-btn">View More</a>
+                    </div>
+                </div>
+
+                <!-- St. George -->
+                <div class="lender-card">
+                    <div class="lender-header">
+                        <div class="lender-logo">STG</div>
+                        <div class="lender-info">
+                            <h3>St. George Bank</h3>
+                            <p>Customer-focused banking</p>
+                        </div>
+                    </div>
+                    <div class="rates-grid">
+                        <div class="rate-item">
+                            <div class="rate-label">Variable Rate</div>
+                            <div class="rate-value">6.39%</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="rate-label">Fixed Rate (2yr)</div>
+                            <div class="rate-value">6.24%</div>
+                        </div>
+                    </div>
+                    <div class="lender-actions">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <a href="#" class="view-more-btn">View More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <h4>Important Information</h4>
+                <p>Rates shown are current as of the last update and may change. These rates are for owner-occupied properties with principal and interest repayments. Your actual rate may vary based on your individual circumstances, loan amount, and property type. Please contact lenders directly for the most up-to-date information and to discuss your specific requirements. Zendo does not provide financial advice and recommends consulting with a qualified financial advisor before making any financial decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <p>&copy; 2024 Zendo. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="#terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
