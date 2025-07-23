@@ -14,7 +14,7 @@ const signUp = async (email, password, name, role) => {
     });
     return user;
   } catch (error) {
-    console.error("Error signing up:", error);
+    console.error("Error signing up:", error.code, error.message);
     throw error;
   }
 };
