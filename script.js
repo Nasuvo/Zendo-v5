@@ -3641,12 +3641,14 @@ function initModalPopups() {
         });
     }
     
-    const joinForm = document.getElementById('join-form');
+    const joinForm = document.getElementById('join-form-page');
     if (joinForm) {
-        joinForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            handleJoinSubmit();
-        });
+        joinForm.addEventListener('submit', handleJoinSubmit);
+    }
+
+    const joinFormModal = document.querySelector('#join-modal-overlay #join-form');
+    if (joinFormModal) {
+        joinFormModal.addEventListener('submit', handleJoinSubmit);
     }
 }
 
@@ -3690,20 +3692,26 @@ function handleSignInSubmit() {
     }, 1500);
 }
 
-function handleJoinSubmit() {
-    const fullname = document.getElementById('join-fullname').value;
-    const email = document.getElementById('join-email').value;
-    const password = document.getElementById('join-password').value;
-    
-    console.log('Join attempt:', { fullname, email, password });
-    
-    // Simulate account creation
-    showToast('Creating your account...', 'success');
-    
-    setTimeout(() => {
-        closeModal('join-modal-overlay');
-        showToast('Account created successfully!', 'success');
-    }, 1500);
+function handleJoinSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const fullname = form.querySelector('[placeholder="Enter your full name"]').value;
+    const email = form.querySelector('[placeholder="Enter your email"]').value;
+    const password = form.querySelector('[placeholder="Create a password"]').value;
+    const role = 'buyer';
+
+    signUp(email, password, fullname, role)
+        .then((user) => {
+            console.log('User signed up successfully:', user);
+            showToast('Account created successfully!', 'success');
+            if (form.closest('.modal-overlay')) {
+                closeModal(form.closest('.modal-overlay').id);
+            }
+        })
+        .catch((error) => {
+            console.error('Error signing up:', error);
+            showToast(`Error: ${error.message}`, 'error');
+        });
 }
 
 // Update existing functions to use new modal system
@@ -3759,6 +3767,8 @@ document.addEventListener('DOMContentLoaded', function () {
   style.innerHTML = '.input-error { border-color: #ef4444 !important; box-shadow: 0 0 0 2px #fee2e2; }';
   document.head.appendChild(style);
 });
+
+import { signUp } from './auth.js';
 
 // Zendo AI Chatbot Functionality
 (function() {
