@@ -3769,6 +3769,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 import { signUp } from './auth.js';
+import { db } from './firebase.js';
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 // Zendo AI Chatbot Functionality
 (function() {
@@ -3905,7 +3907,26 @@ async function testSearchProperties() {
 
     const responseData = await response.json();
     console.log("Response from cloud function:", responseData);
+
+    const propertiesRef = collection(db, "properties");
+    let q = query(propertiesRef);
+
+    if (responseData.result.suburb) {
+      q = query(q, where("suburb", "==", responseData.result.suburb));
+    }
+    if (responseData.result.bedrooms) {
+      q = query(q, where("bedrooms", ">=", responseData.result.bedrooms));
+    }
+    if (responseData.result.priceMax) {
+      q = query(q, where("price", "<=", responseData.result.priceMax));
+    }
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      console.log("Matching property:", doc.id, " => ", doc.data());
+    });
+
   } catch (error) {
-    console.error("Error calling searchProperties cloud function:", error);
+    console.error("Error calling searchProperties cloud function or querying Firestore:", error);
   }
 }
