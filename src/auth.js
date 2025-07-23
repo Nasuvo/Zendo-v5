@@ -6,16 +6,23 @@ const signUp = async (email, password, name, role) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-    await setDoc(doc(db, "users", user.uid), {
-      name,
-      email,
-      role,
-      createdAt: serverTimestamp(),
-    });
+    try {
+      await setDoc(doc(db, "users", user.uid), {
+        name,
+        email,
+        role,
+        createdAt: serverTimestamp(),
+      });
+    } catch (dbError) {
+      console.error("Error creating user document:", dbError);
+      // Optionally, you might want to delete the user from Auth if Firestore write fails
+      // await user.delete();
+      throw dbError;
+    }
     return user;
-  } catch (error) {
-    console.error("Error signing up:", error.code, error.message);
-    throw error;
+  } catch (authError) {
+    console.error("Error signing up:", authError.code, authError.message);
+    throw authError;
   }
 };
 
