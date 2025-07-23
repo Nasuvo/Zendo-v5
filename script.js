@@ -3880,3 +3880,32 @@ import { signUp } from './auth.js';
 
   // Typing effect CSS is in styles.css
 })();
+
+async function testSearchProperties() {
+  const url = "https://us-central1-zendo-4736e.cloudfunctions.net/searchProperties";
+  const data = {
+    data: {
+      query: "3 bedroom townhouse in Fitzroy under $1.2 million"
+    }
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`HTTP error! status: ${response.status}, message: ${errorData.error.message}`);
+    }
+
+    const responseData = await response.json();
+    console.log("Response from cloud function:", responseData);
+  } catch (error) {
+    console.error("Error calling searchProperties cloud function:", error);
+  }
+}
