@@ -96,7 +96,59 @@ document.addEventListener('DOMContentLoaded', function() {
             brokerHero.classList.remove('chat-active');
         }
     });
+
+    onAuthStateChanged(auth, async (user) => {
+        const authButtons = document.querySelector('.auth-buttons');
+        const mobileAuthContainer = document.querySelector('.mobile-auth');
+
+        if (user) {
+            const userDocRef = doc(db, "users", user.uid);
+            const userDoc = await getDoc(userDocRef);
+            const userName = userDoc.exists() ? userDoc.data().name : 'User';
+            const firstName = userName.split(' ')[0];
+
+            authButtons.innerHTML = `
+                <span class="user-name">Hi, ${firstName}</span>
+                <button class="auth-btn signout-btn">Sign Out</button>
+            `;
+            mobileAuthContainer.innerHTML = `
+                <span class="user-name">Hi, ${firstName}</span>
+                <button class="mobile-signout-btn">Sign Out</button>
+            `;
+
+            document.querySelector('.signout-btn').addEventListener('click', handleSignOut);
+            document.querySelector('.mobile-signout-btn').addEventListener('click', handleSignOut);
+
+        } else {
+            authButtons.innerHTML = `
+                <button class="auth-btn signin-btn">Sign In</button>
+                <button class="auth-btn join-btn">Join</button>
+            `;
+            mobileAuthContainer.innerHTML = `
+                <button class="mobile-signin-btn">Sign In</button>
+                <button class="mobile-join-btn">Join</button>
+            `;
+
+            // Re-attach event listeners
+            document.querySelector('.signin-btn').addEventListener('click', () => openModal('signin-modal-overlay'));
+            document.querySelector('.join-btn').addEventListener('click', () => openModal('join-modal-overlay'));
+            document.querySelector('.mobile-signin-btn').addEventListener('click', () => openModal('signin-modal-overlay'));
+            document.querySelector('.mobile-join-btn').addEventListener('click', () => openModal('join-modal-overlay'));
+        }
+    });
 });
+
+function handleSignOut() {
+    signOut()
+        .then(() => {
+            console.log('User signed out successfully');
+            showToast('Successfully signed out!', 'success');
+        })
+        .catch((error) => {
+            console.error('Error signing out:', error);
+            showToast(`Error: ${error.message}`, 'error');
+        });
+}
 
 // Enhanced property database with coordinates and proximity data
 const propertyDatabase = [
@@ -3228,27 +3280,6 @@ function initModals() {
     });
 }
 
-// Enhanced form handlers
-function handleSignIn(e) {
-    e.preventDefault();
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    
-    // Show loading state
-    submitBtn.textContent = 'Signing in...';
-    submitBtn.disabled = true;
-    
-    // Simulate API call
-    setTimeout(() => {
-        showToast('Sign in functionality coming soon!', 'success');
-        closeSignInModal();
-        
-        // Reset button
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }, 1500);
-}
 
 function handleJoin(e) {
     e.preventDefault();
@@ -3681,15 +3712,16 @@ function handleSignInSubmit() {
     const email = document.getElementById('signin-email').value;
     const password = document.getElementById('signin-password').value;
     
-    console.log('Sign in attempt:', { email, password });
-    
-    // Simulate sign in process
-    showToast('Signing you in...', 'success');
-    
-    setTimeout(() => {
-        closeModal('signin-modal-overlay');
-        showToast('Successfully signed in!', 'success');
-    }, 1500);
+    signIn(email, password)
+        .then((user) => {
+            console.log('User signed in successfully:', user);
+            showToast('Successfully signed in!', 'success');
+            closeModal('signin-modal-overlay');
+        })
+        .catch((error) => {
+            console.error('Error signing in:', error);
+            showToast(`Error: ${error.message}`, 'error');
+        });
 }
 
 function handleJoinSubmit(event) {
@@ -3768,9 +3800,10 @@ document.addEventListener('DOMContentLoaded', function () {
   document.head.appendChild(style);
 });
 
-import { signUp } from './auth.js';
-import { db } from './firebase.js';
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { signUp, signIn, signOut } from './auth.js';
+import { auth, db } from './firebase.js';
+import { collection, query, where, getDocs, doc, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from 'firebase/auth';
 
 // Zendo AI Chatbot Functionality
 (function() {
